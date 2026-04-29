@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>linesofynvi - Emori Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+    <div class="pad-wrapper">
+        <main class="grid-table grid-table-project">
+            <!-- Extended outer lines -->
+            <div class="ext-line top-ext"></div>
+            <div class="ext-line bottom-ext"></div>
+            <div class="ext-line left-ext"></div>
+            <div class="ext-line right-ext"></div>
+
+            <!-- ROW 1 : HEADER -->
+            <div class="cell span-4 header header-logo">
+                <span class="logo-text">linesofynvi</span>
+            </div>
+            <div class="cell span-4 header header-search">
+                <div class="search">
+                    <img src="assets\icons\iconstack.io - (Search).svg" alt="">
+                </div>
+            </div>
+            <div class="cell span-0.5 header header-menu center-content">
+                <div class="sort">
+                    <img src="assets\icons\iconstack.io - (Filter 2).svg" alt="">
+                </div>
+            </div>
+            <div class="cell span-0.5 header header-profile center-content">
+                <div class="filter">
+                    <img src="assets\icons\iconstack.io - (Filters) (1).svg" alt="">
+                </div>
+            </div>
+
+            <!-- ROW 2 : BANNER -->
+            <div class="cell span-8 banner project-banner">
+                <a href="index.html" class="back-link">
+                    <img src="assets\icons\iconstack.io - (Square Rounded Arrow Left).svg" class="cyan-icon" alt="Back">
+                    <span>An evolving archive of questions, processes and outcomes.</span>
+                </a>
+            </div>
+
+            <!-- ROW 3 : PROJECT DETAILS -->
+            <div class="cell span-2 project-info bg-purple align-left">
+                <div style="height: 100%; width: 100%; display: flex; flex-direction: column;">
+                    <h2>Emori</h2>
+                    <div class="g-meta-block" style="margin-top: auto;">
+                        <div class="g-row"><span class="g-lbl">Date</span><span class="g-val v-white">Jan - May
+                                2025</span></div>
+                        <div class="g-row"><span class="g-lbl">Project</span><span class="g-val v-fuchsia">Emotionally
+                                Sensitive Camera</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cell span-4 project-media no-pad">
+                <!-- Media content goes here -->
+            </div>
+
+            <div class="cell span-2 project-tags bg-purple align-left">
+                <div style="height: 100%; width: 100%; display: flex; flex-direction: column;">
+                    <div class="tag-list">
+                        <div class="pill-cell tag-pill">
+                            <img src="assets\icons\Property 1=Default.svg" alt="">
+                            <span>Systems</span>
+                        </div>
+                        <div class="pill-cell tag-pill">
+                            <img src="assets\icons\Property 1=Default.svg" alt="">
+                            <span>Fabrications</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ROW 4 : FOOTER -->
+            <div class="cell span-2 footer footer-socials no-pad">
+                <div class="socials-grid">
+                    <div class="social-cell"><img src="assets\icons\iconstack.io - (Instagram).svg" alt=""></div>
+                    <div class="social-cell"><img src="assets\icons\iconstack.io - (Brand Linkedin).svg" alt=""></div>
+                    <div class="social-cell"><img src="assets\icons\iconstack.io - (Mail 01).svg" alt=""></div>
+                </div>
+            </div>
+            <div class="cell span-4 footer footer-resume align-left">
+                <img src="assets\icons\iconstack.io - (File Type Pdf).svg" alt=""><span
+                    class="resume-text">Resume</span>
+            </div>
+
+            <div class="cell span-2 footer footer-pagination no-pad">
+                <div class="pagination-grid" style="grid-template-columns: 1fr;">
+                    <div class="page-cell center-content" style="justify-content: flex-end; padding-right: 16px;">
+                        <img src="assets\icons\iconstack.io - (Square Rounded Arrow Left).svg" alt="Previous"
+                            id="prev-page-btn" style="cursor: pointer; margin-right: 16px;">
+                        <img src="assets\icons\iconstack.io - (Square Rounded Arrow Right).svg" alt="Next"
+                            id="next-page-btn" style="cursor: pointer;">
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
