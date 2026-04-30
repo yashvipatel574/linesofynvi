@@ -25,31 +25,22 @@ const VideoBlock = ({ block }) => {
 
     if (isYouTube) {
         return (
-            <iframe
-                width="100%"
-                height="480"
-                src={url}
-                title={block.alt || "Project video"}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                style={{ marginBottom: '24px', borderRadius: '8px', border: '1px solid var(--project-border-color)', display: 'block' }}
-            ></iframe>
+            <div className="project-video-wrapper project-youtube-wrapper">
+                <iframe
+                    className="project-video-iframe"
+                    src={url}
+                    title={block.alt || "Project video"}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                ></iframe>
+            </div>
         );
     }
 
     return (
         <div
-            style={{
-                position: 'relative',
-                width: '100%',
-                marginBottom: '24px',
-                cursor: 'pointer',
-                borderRadius: '8px',
-                overflow: 'hidden',
-                border: '1px solid var(--project-border-color)',
-                backgroundColor: '#000'
-            }}
+            className="project-video-wrapper project-local-wrapper"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={togglePlay}
@@ -57,43 +48,19 @@ const VideoBlock = ({ block }) => {
             <video
                 ref={videoRef}
                 src={url}
-                style={{ width: '100%', display: 'block', objectFit: 'cover' }}
+                className="project-local-video"
                 onEnded={() => setIsPlaying(false)}
                 playsInline
             />
             {/* Play/Pause Overlay */}
-            <div style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: '64px',
-                height: '64px',
-                borderRadius: '50%',
-                background: 'rgba(0, 174, 239, 0.8)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                opacity: (!isPlaying || isHovered) ? 1 : 0,
-                transition: 'all 0.3s ease',
-                pointerEvents: 'none',
-                boxShadow: '0 0 20px rgba(0,0,0,0.5)',
-                zIndex: 2
-            }}>
+            <div className={`project-video-overlay ${(!isPlaying || isHovered) ? 'visible' : ''}`}>
                 {isPlaying ? (
-                    <div style={{ display: 'flex', gap: '6px' }}>
-                        <div style={{ width: '6px', height: '24px', background: 'white', borderRadius: '2px' }}></div>
-                        <div style={{ width: '6px', height: '24px', background: 'white', borderRadius: '2px' }}></div>
+                    <div className="project-pause-icon">
+                        <div className="pause-bar"></div>
+                        <div className="pause-bar"></div>
                     </div>
                 ) : (
-                    <div style={{
-                        width: 0,
-                        height: 0,
-                        borderTop: '15px solid transparent',
-                        borderBottom: '15px solid transparent',
-                        borderLeft: '25px solid white',
-                        marginLeft: '6px'
-                    }}></div>
+                    <div className="project-play-icon"></div>
                 )}
             </div>
         </div>
@@ -122,26 +89,18 @@ const CarouselBlock = ({ block }) => {
     };
 
     return (
-        <div style={{ marginBottom: '24px', position: 'relative' }}>
+        <div className="project-carousel-wrapper">
             <div
                 ref={scrollRef}
                 onScroll={onScroll}
-                className="carousel"
-                style={{
-                    display: 'flex',
-                    overflowX: 'auto',
-                    scrollSnapType: 'x mandatory',
-                    gap: 0,
-                    border: '1px solid var(--project-border-color)',
-                    paddingBottom: 0
-                }}
+                className="project-carousel"
             >
                 {block.carousel.map((item, idx) => (
-                    <div key={idx} style={{ flex: '0 0 100%', scrollSnapAlign: 'start', display: 'flex' }}>
+                    <div key={idx} className="project-carousel-item">
                         <img
                             src={item.url}
                             alt={item.alt || "Carousel image"}
-                            style={{ width: '100%', objectFit: 'cover', display: 'block' }}
+                            className="project-carousel-image"
                         />
                     </div>
                 ))}
@@ -152,53 +111,24 @@ const CarouselBlock = ({ block }) => {
                 <>
                     <button
                         onClick={() => scrollToIndex(currentIndex - 1)}
-                        className="carousel-btn prev icon-trigger"
-                        style={{
-                            position: 'absolute', left: '-20px', top: '50%', transform: 'translateY(-50%)',
-                            background: 'var(--primary-background)', border: '1px solid var(--project-border-color)', borderRadius: '50%', width: '44px', height: '44px',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-                            opacity: currentIndex === 0 ? 0 : 1, pointerEvents: currentIndex === 0 ? 'none' : 'auto',
-                            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                            zIndex: 10,
-                            boxShadow: '0 4px 12px rgba(0,0,0,0.5)'
-                        }}
+                        className={`carousel-btn prev icon-trigger ${currentIndex === 0 ? 'disabled' : ''}`}
                     >
-                        <Icon name="arrow-left" hoverable={true} style={{ width: '20px', height: '20px', filter: 'brightness(1.5)' }} />
+                        <Icon name="arrow-left" hoverable={true} />
                     </button>
                     <button
                         onClick={() => scrollToIndex(currentIndex + 1)}
-                        className="carousel-btn next icon-trigger"
-                        style={{
-                            position: 'absolute', right: '-20px', top: '50%', transform: 'translateY(-50%)',
-                            background: 'var(--primary-background)', border: '1px solid var(--project-border-color)', borderRadius: '50%', width: '44px', height: '44px',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-                            opacity: currentIndex === block.carousel.length - 1 ? 0 : 1, pointerEvents: currentIndex === block.carousel.length - 1 ? 'none' : 'auto',
-                            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                            zIndex: 10,
-                            boxShadow: '0 4px 12px rgba(0,0,0,0.5)'
-                        }}
+                        className={`carousel-btn next icon-trigger ${currentIndex === block.carousel.length - 1 ? 'disabled' : ''}`}
                     >
-                        <Icon name="arrow-right" hoverable={true} style={{ width: '20px', height: '20px', filter: 'brightness(1.5)' }} />
+                        <Icon name="arrow-right" hoverable={true} />
                     </button>
 
                     {/* Dots */}
-                    <div style={{
-                        position: 'absolute', bottom: '-28px', left: '50%', transform: 'translateX(-50%)',
-                        display: 'flex', gap: '10px', zIndex: 2, padding: '8px 16px', borderRadius: '20px',
-                        background: 'rgba(255,255,255,0.03)'
-                    }}>
+                    <div className="carousel-dots-container">
                         {block.carousel.map((_, idx) => (
                             <div
                                 key={idx}
                                 onClick={() => scrollToIndex(idx)}
-                                style={{
-                                    width: currentIndex === idx ? '20px' : '6px',
-                                    height: '6px',
-                                    borderRadius: '3px',
-                                    background: currentIndex === idx ? 'var(--highlight-color)' : 'rgba(255,255,255,0.2)',
-                                    cursor: 'pointer',
-                                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)'
-                                }}
+                                className={`carousel-dot ${currentIndex === idx ? 'active' : ''}`}
                             />
                         ))}
                     </div>
@@ -292,14 +222,14 @@ export default function Project() {
                 <div className="ext-line right-ext"></div>
 
                 {/* ROW 1: Title */}
-                <div className="cell" style={{ gridColumn: '1 / -1', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', padding: '0 32px' }}>
-                    <span className="logo-text" style={{ color: 'var(--theme-color)', fontSize: '32px', fontWeight: 600 }}>{project.title}</span>
+                <div className="cell project-title-cell">
+                    <span className="logo-text project-title">{project.title}</span>
                 </div>
 
                 {/* ROW 2: Back Arrow */}
-                <div className="cell" style={{ gridColumn: '1 / -1', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', padding: '0 32px' }}>
-                    <Link to="/" className="icon-trigger" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-                        <Icon name="arrow-left" hoverable={true} style={{ width: '24px', height: '24px', filter: 'brightness(0.8)' }} />
+                <div className="cell project-back-cell">
+                    <Link to="/" className="icon-trigger project-back-link">
+                        <Icon name="arrow-left" hoverable={true} />
                     </Link>
                 </div>
 
@@ -401,53 +331,35 @@ export default function Project() {
                             <div key={tab.id} id={`section-${tab.id}`} style={{ marginBottom: '64px', minHeight: '100px' }}>
                                 {tab.content?.map((block, i) => {
                                     if (block.type === 'subtext') {
-                                        return <span key={i} style={{ display: 'block', color: 'var(--highlight-color)', fontSize: '14px', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '24px', fontWeight: 600 }}>{block.text}</span>;
+                                        return <span key={i} className="project-subtext">{block.text}</span>;
                                     }
                                     if (block.type === 'paragraph') {
-                                        return <p key={i} style={{ color: 'var(--secondary-text)', lineHeight: 1.6, marginBottom: '24px', fontSize: '15px' }}>{block.text}</p>;
+                                        return <p key={i} className="project-paragraph">{block.text}</p>;
                                     }
                                     if (block.type === 'subtitle') {
-                                        return <h3 key={i} style={{ color: 'var(--highlight-color)', marginBottom: '16px', fontWeight: 500, fontSize: '20px' }}>{block.text}</h3>;
+                                        return <h3 key={i} className="project-subtitle">{block.text}</h3>;
                                     }
                                     if (block.type === 'image') {
-                                        return <img key={i} src={block.url} alt={block.alt || "Project media"} style={{ width: '100%', marginBottom: '24px', objectFit: 'cover', border: '1px solid var(--project-border-color)' }} />;
+                                        return <img key={i} src={block.url} alt={block.alt || "Project media"} className="project-image" />;
                                     }
                                     if (block.type === 'video') {
                                         return <VideoBlock key={i} block={block} />;
                                     }
                                     if (block.type === 'link') {
                                         return (
-                                            <div key={i} style={{ marginBottom: '48px' }}>
-                                                <div style={{
-                                                    width: '100%',
-                                                    height: '600px',
-                                                    borderRadius: '12px',
-                                                    overflow: 'hidden',
-                                                    border: '1px solid var(--project-border-color)',
-                                                    background: '#fff',
-                                                    position: 'relative'
-                                                }}>
+                                            <div key={i} className="project-link-wrapper">
+                                                <div className="project-link-container">
                                                     <iframe
                                                         src={block.url}
-                                                        width="100%"
-                                                        height="100%"
-                                                        style={{ border: 'none' }}
+                                                        className="project-iframe-full"
                                                         title={block.text || "Embedded Content"}
                                                     ></iframe>
                                                 </div>
-                                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '12px' }}>
-                                                    <span style={{ color: 'var(--secondary-text)', opacity: 0.6, fontSize: '14px' }}>
+                                                <div className="project-link-footer">
+                                                    <span className="project-link-text">
                                                         {block.text || "Interactive Archive"}
                                                     </span>
-                                                    <a href={block.url} target="_blank" rel="noopener noreferrer" style={{
-                                                        color: 'var(--highlight-color)',
-                                                        fontSize: '14px',
-                                                        textDecoration: 'none',
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        gap: '6px',
-                                                        fontWeight: 500
-                                                    }}>
+                                                    <a href={block.url} target="_blank" rel="noopener noreferrer" className="project-link-btn">
                                                         Visit Website
                                                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -461,7 +373,7 @@ export default function Project() {
                                     }
                                     if (block.type === 'poster-grid') {
                                         return (
-                                            <div key={i} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '24px', marginBottom: '48px' }}>
+                                            <div key={i} className="project-poster-grid">
                                                 {block.posters?.map((poster, pIdx) => (
                                                     <div key={pIdx} className="poster-card">
                                                         <img src={poster.url} alt={poster.title} />
@@ -476,7 +388,7 @@ export default function Project() {
                                     }
                                     if (block.type === 'image-grid') {
                                         return (
-                                            <div key={i} style={{ display: 'grid', gridTemplateColumns: 'repeat(1, minmax(0, 1fr))', gap: '16px', marginBottom: '48px' }}>
+                                            <div key={i} className="project-image-grid">
                                                 {block.image?.map((image, pIdx) => (
                                                     <div key={pIdx} className="image-card">
                                                         <img src={image.url} alt={image.title} />
@@ -487,7 +399,7 @@ export default function Project() {
                                     }
                                     if (block.type === 'heuristics-research-grid') {
                                         return (
-                                            <div key={i} style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px', marginBottom: '48px' }}>
+                                            <div key={i} className="project-heuristics-research">
                                                 {block.heuristics?.map((heuristic, pIdx) => (
                                                     <div key={pIdx} className="heuristic-card">
                                                         <img src={heuristic.url} alt={heuristic.title} />
@@ -502,7 +414,7 @@ export default function Project() {
                                     }
                                     if (block.type === 'heuristics-concept-grid') {
                                         return (
-                                            <div key={i} style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '48px' }}>
+                                            <div key={i} className="project-heuristics-concept">
                                                 {block.heuristics?.map((heuristic, pIdx) => (
                                                     <div key={pIdx} className="heuristic-card">
                                                         <img src={heuristic.url} alt={heuristic.title} />
@@ -517,15 +429,11 @@ export default function Project() {
                                     }
                                     if (block.type === 'html') {
                                         return (
-                                            <div key={i} style={{ marginBottom: '48px', width: '100%' }}>
+                                            <div key={i} className="project-html-wrapper">
                                                 <iframe
                                                     src={block.src}
-                                                    width="100%"
-                                                    height={block.src.includes('linkedin') ? "600" : "500"}
-                                                    frameBorder="0"
-                                                    allowFullScreen
+                                                    className={`project-html-iframe ${block.src.includes('linkedin') ? 'linkedin' : ''}`}
                                                     title="Embedded Content"
-                                                    style={{ display: 'block' }}
                                                 ></iframe>
                                             </div>
                                         );
