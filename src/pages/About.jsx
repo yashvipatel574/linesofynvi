@@ -165,22 +165,21 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* ROW 5: FOOTER (Explicitly placed) */}
+                {/* ROW 5: FOOTER (Desktop only) */}
                 <div className="cell span-2 footer footer-about no-pad">
                     <div className="socials-grid-about">
-                        <div className="social-cell-about icon-trigger"><Icon name="instagram" hoverable={true} /></div>
                         <a href="https://www.linkedin.com/in/yashvi-patel-512a33253/" target="_blank" rel="noopener noreferrer" className="social-cell-about icon-trigger" style={{ textDecoration: 'none' }}>
                             <Icon name="linkedin" hoverable={true} />
                         </a>
-                        <a href="mailto:patelyashvi754@gmail.com" className="social-cell-about icon-trigger" style={{ textDecoration: 'none' }}>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=patelyashvi754@gmail.com" target="_blank" rel="noopener noreferrer" className="social-cell-about icon-trigger" style={{ textDecoration: 'none' }}>
                             <Icon name="mail" hoverable={true} />
                         </a>
                     </div>
                 </div>
-                <div className="cell span-2 footer footer-about footer-resume-about icon-trigger">
+                <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer" className="cell span-2 footer footer-about footer-resume-about icon-trigger" style={{ textDecoration: 'none', color: 'inherit' }}>
                     <Icon name="resume" hoverable={true} />
                     <span className="resume-text-about">Resume</span>
-                </div>
+                </a>
                 <div className="cell span-3 footer footer-about no-pad">
                     <div className="back-gallery-container">
                         <Link to="/" className="back-link-pill icon-trigger">
@@ -191,6 +190,28 @@ export default function About() {
                 </div>
                 <div className="cell span-1 footer footer-about header-empty"></div>
             </main>
+
+            {/* MOBILE STICKY FOOTER */}
+            <div className="mobile-footer">
+                <div className="mobile-footer-left">
+                    <a href="https://www.linkedin.com/in/yashvi-patel-512a33253/" target="_blank" rel="noopener noreferrer" className="mobile-footer-cell">
+                        <Icon name="linkedin" />
+                    </a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=patelyashvi754@gmail.com" target="_blank" rel="noopener noreferrer" className="mobile-footer-cell">
+                        <Icon name="mail" />
+                    </a>
+                    <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer" className="mobile-footer-cell mobile-footer-resume">
+                        <Icon name="resume" />
+                        <span>Resume</span>
+                    </a>
+                </div>
+                <div className="mobile-footer-pages">
+                    <Link to="/" className="mobile-back-link">
+                        <Icon name="arrow-left" />
+                        <span>Gallery</span>
+                    </Link>
+                </div>
+            </div>
         </div>
     );
 }

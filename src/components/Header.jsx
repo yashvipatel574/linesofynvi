@@ -1,14 +1,15 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Icon from './Icon';
 
-export default function Header({ 
-    sortValue, 
-    setSortValue, 
-    filterValues, 
-    setFilterValues, 
-    searchTerm, 
+export default function Header({
+    sortValue,
+    setSortValue,
+    filterValues,
+    setFilterValues,
+    searchTerm,
     setSearchTerm,
-    minimal = false 
+    minimal = false
 }) {
     // ... rest of the logic
     const [localSort, setLocalSort] = useState("custom");
@@ -29,7 +30,6 @@ export default function Header({
     const filters = [
         "All",
         "Industrial Product Design",
-        "Multimedia Design",
         "UI/UX Design",
         "Graphic Design",
         "Animation",
@@ -84,6 +84,19 @@ export default function Header({
 
             <div className={`cell ${minimal ? 'span-3' : 'span-4'} header header-logo`}>
                 <span className="logo-text">linesofynvi</span>
+                <div className="header-mobile-icons">
+                    <div
+                        className="icon-trigger"
+                        onClick={() => setOpenSidebar(openSidebar === 'sort' ? null : 'sort')}
+                        style={{ cursor: 'pointer' }}
+                        title="Sort & Filter"
+                    >
+                        <Icon name="sidebar" className="menu-icon" active={openSidebar === 'sort'} />
+                    </div>
+                    <Link to="/about" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+                        <Icon name="about" className="menu-icon" hoverable={true} />
+                    </Link>
+                </div>
             </div>
             {minimal && <div className="cell span-5 header header-empty"></div>}
             {!minimal && (
@@ -91,9 +104,9 @@ export default function Header({
                     <div className={`cell span-2 header header-search icon-trigger ${currentSearch ? 'active' : ''}`}>
                         <div className="search-container" style={{ display: 'flex', alignItems: 'center', width: '100%', gap: '12px' }}>
                             <Icon name="search" active={!!currentSearch} />
-                            <input 
-                                type="text" 
-                                placeholder="Search projects..." 
+                            <input
+                                type="text"
+                                placeholder="Search projects..."
                                 value={currentSearch}
                                 onChange={(e) => currentSetSearch(e.target.value)}
                                 className="search-input"
@@ -105,10 +118,10 @@ export default function Header({
                         onClick={() => setOpenSidebar(openSidebar === 'sort' ? null : 'sort')}
                     >
                         <div className="sort" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <Icon 
-                                name="sort" 
-                                active={isSortAsc ? 'asc' : 'desc'} 
-                                className="menu-icon" 
+                            <Icon
+                                name="sort"
+                                active={isSortAsc ? 'asc' : 'desc'}
+                                className="menu-icon"
                             />
                             <span className="custom">{currentSort}</span>
                         </div>
@@ -118,10 +131,10 @@ export default function Header({
                         onClick={() => setOpenSidebar(openSidebar === 'filter' ? null : 'filter')}
                     >
                         <div className="filter" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <Icon 
-                                name="filter" 
-                                active={openSidebar === 'filter' || activeFilterCount > 0} 
-                                className="menu-icon" 
+                            <Icon
+                                name="filter"
+                                active={openSidebar === 'filter' || activeFilterCount > 0}
+                                className="menu-icon"
                             />
                             <span className="custom">{filterText}</span>
                         </div>

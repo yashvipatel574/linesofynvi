@@ -122,7 +122,7 @@ const CarouselBlock = ({ block }) => {
     };
 
     return (
-        <div style={{ marginBottom: '48px', position: 'relative' }}>
+        <div style={{ marginBottom: '24px', position: 'relative' }}>
             <div
                 ref={scrollRef}
                 onScroll={onScroll}
@@ -132,18 +132,16 @@ const CarouselBlock = ({ block }) => {
                     overflowX: 'auto',
                     scrollSnapType: 'x mandatory',
                     gap: 0,
-                    borderRadius: '12px',
                     border: '1px solid var(--project-border-color)',
-                    background: 'rgba(255,255,255,0.03)',
                     paddingBottom: 0
                 }}
             >
                 {block.carousel.map((item, idx) => (
-                    <div key={idx} style={{ flex: '0 0 100%', scrollSnapAlign: 'start', aspectRatio: '16/10', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
+                    <div key={idx} style={{ flex: '0 0 100%', scrollSnapAlign: 'start', display: 'flex' }}>
                         <img
                             src={item.url}
                             alt={item.alt || "Carousel image"}
-                            style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block', boxShadow: '0 10px 30px rgba(0,0,0,0.3)' }}
+                            style={{ width: '100%', objectFit: 'cover', display: 'block' }}
                         />
                     </div>
                 ))}
@@ -566,28 +564,25 @@ export default function Project() {
                 </div>
 
                 {/* ROW 4: FOOTER */}
-                <div className="cell no-pad" style={{ gridColumn: '1 / 2' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', width: '100%', height: '100%' }}>
-                        <div className="icon-trigger" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', borderRight: '1px solid var(--primary-border)' }}>
-                            <Icon name="instagram" hoverable={true} />
-                        </div>
+                <div className="cell no-pad project-footer-socials" style={{ gridColumn: '1 / 2' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', width: '100%', height: '100%' }}>
                         <a href="https://www.linkedin.com/in/yashvi-patel-512a33253/" target="_blank" rel="noopener noreferrer" className="icon-trigger" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', borderRight: '1px solid var(--primary-border)', textDecoration: 'none' }}>
                             <Icon name="linkedin" hoverable={true} />
                         </a>
-                        <a href="mailto:patelyashvi754@gmail.com" className="icon-trigger" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textDecoration: 'none' }}>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=patelyashvi754@gmail.com" target="_blank" rel="noopener noreferrer" className="icon-trigger" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textDecoration: 'none' }}>
                             <Icon name="mail" hoverable={true} />
                         </a>
                     </div>
                 </div>
 
-                <div className="cell no-pad" style={{ gridColumn: '2 / 3', display: 'flex', justifyContent: 'flex-start', padding: '0 32px' }}>
+                <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer" className="cell no-pad project-footer-resume" style={{ gridColumn: '2 / 3', display: 'flex', justifyContent: 'flex-start', padding: '0 32px', textDecoration: 'none' }}>
                     <div className="icon-trigger" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                         <Icon name="resume" hoverable={true} />
                         <span style={{ color: 'var(--secondary-text)', fontWeight: 500 }}>Resume</span>
                     </div>
-                </div>
+                </a>
 
-                <div className="cell no-pad" style={{ gridColumn: '3 / 4' }}>
+                <div className="cell no-pad project-footer-nav" style={{ gridColumn: '3 / 4' }}>
                     <div className="icon-trigger" style={{ display: 'flex', width: '100%', height: '100%' }}>
                         <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', borderRight: '1px solid var(--primary-border)', cursor: prevProject ? 'pointer' : 'default', opacity: prevProject ? 1 : 0.3 }} onClick={() => prevProject && navigate(`/project/${prevProject.id}`)}>
                             <Icon name="arrow-left" hoverable={!!prevProject} />

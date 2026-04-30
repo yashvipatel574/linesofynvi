@@ -5,14 +5,25 @@ import Header from "../components/Header";
 import Icon from "../components/Icon";
 
 export default function Home() {
-    const itemsPerPage = 4;
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 950);
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth <= 950);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const itemsPerPage = isMobile ? 9999 : 4;
     const [currentPage, setCurrentPage] = useState(1);
     const [sortValue, setSortValue] = useState("custom");
     const [filterValues, setFilterValues] = useState(["All"]);
     const [searchTerm, setSearchTerm] = useState("");
 
     const getCategories = (project) => {
-        // ... (existing getCategories logic)
+        // Use manual categories if they exist in data.js
+        if (project.categories && project.categories.length > 0) {
+            return project.categories;
+        }
+
         const p = project.project.toLowerCase();
         const t = project.title.toLowerCase();
         const tags = (project.details?.tags || []).map(tag => tag.toLowerCase());
@@ -117,6 +128,11 @@ export default function Home() {
                     setSearchTerm={setSearchTerm}
                 />
 
+                {/* MOBILE BIO BLOCK */}
+                <div className="mobile-bio-block">
+                    Yashvi Patel | Bengaluru / Dubai | Product & Multimedia Design Student @ DIDI | Multidisciplinary Designer
+                </div>
+
                 {/* ROW 2 : HERO */}
                 <div className="cell span-2 hero hero-info">
                     <div className="info-block"><span className="info-val">Yashvi Patel</span></div>
@@ -171,11 +187,20 @@ export default function Home() {
                                     <span className="gallery-tooltip">Click to view project</span>
                                 </div>
                             </div>
+                            {/* Desktop info panel */}
                             <div className="gallery-info" style={{ background: `linear-gradient(to bottom, var(--primary-background), color-mix(in srgb, var(--theme-color) 30%, var(--primary-background)))` }}>
                                 <h3 className="g-title">{item.title}</h3>
                                 <div className="g-meta-block">
                                     <div className="g-row"><span className="g-lbl">Date</span><span className="g-val v-white">{item.date}</span></div>
                                     <div className="g-row"><span className="g-lbl">Project</span><span className="g-val" style={{ color: 'var(--theme-color)' }}>{item.project}</span></div>
+                                </div>
+                            </div>
+                            {/* Mobile info bar — shown below image */}
+                            <div className="gallery-info-mobile">
+                                <h3 className="g-title-mobile">{item.title}</h3>
+                                <div className="g-meta-mobile">
+                                    <span className="g-date-mobile">{item.date}</span>
+                                    <span className="g-project-mobile">{item.project}</span>
                                 </div>
                             </div>
                         </Link>
@@ -194,18 +219,17 @@ export default function Home() {
                 {/* ROW 5 : FOOTER */}
                 <div className="cell span-2 footer footer-socials no-pad">
                     <div className="socials-grid">
-                        <div className="social-cell icon-trigger"><Icon name="instagram" hoverable={true} /></div>
                         <a href="https://www.linkedin.com/in/yashvi-patel-512a33253/" target="_blank" rel="noopener noreferrer" className="social-cell icon-trigger" style={{ textDecoration: 'none' }}>
                             <Icon name="linkedin" hoverable={true} />
                         </a>
-                        <a href="mailto:patelyashvi754@gmail.com" className="social-cell icon-trigger" style={{ textDecoration: 'none' }}>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=patelyashvi754@gmail.com" target="_blank" rel="noopener noreferrer" className="social-cell icon-trigger" style={{ textDecoration: 'none' }}>
                             <Icon name="mail" hoverable={true} />
                         </a>
                     </div>
                 </div>
-                <div className="cell span-2 footer footer-resume align-left icon-trigger">
+                <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer" className="cell span-2 footer footer-resume align-left icon-trigger" style={{ textDecoration: 'none', color: 'inherit' }}>
                     <Icon name="resume" hoverable={true} /><span className="resume-text">Resume</span>
-                </div>
+                </a>
                 <div className="cell span-4 footer footer-pagination no-pad">
                     <div className="pagination-grid">
                         <div className="page-cell numbers-cell">
@@ -235,7 +259,45 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
+                <div className="mobile-pagination">
+                    {Array.from({ length: totalPages }).map((_, i) => (
+                        <span
+                            key={i}
+                            className={currentPage === i + 1 ? 'active' : ''}
+                            onClick={() => setCurrentPage(i + 1)}
+                        >
+                            {i + 1}
+                        </span>
+                    ))}
+                </div>
             </main>
+
+            {/* MOBILE STICKY FOOTER */}
+            <div className="mobile-footer">
+                <div className="mobile-footer-left">
+                    <a href="https://www.linkedin.com/in/yashvi-patel-512a33253/" target="_blank" rel="noopener noreferrer" className="mobile-footer-cell">
+                        <Icon name="linkedin" />
+                    </a>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=patelyashvi754@gmail.com" target="_blank" rel="noopener noreferrer" className="mobile-footer-cell">
+                        <Icon name="mail" />
+                    </a>
+                    <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer" className="mobile-footer-cell mobile-footer-resume">
+                        <Icon name="resume" />
+                        <span>Resume</span>
+                    </a>
+                </div>
+                <div className="mobile-footer-pages">
+                    {Array.from({ length: totalPages }).map((_, i) => (
+                        <span
+                            key={i}
+                            className={currentPage === i + 1 ? 'active' : ''}
+                            onClick={() => setCurrentPage(i + 1)}
+                        >
+                            {i + 1}
+                        </span>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }

@@ -8,6 +8,7 @@ export const galleryData = [
         imgStyle: { backgroundImage: "url('/assets/caulk gun/render2.jpg')" },
         imgClass: "gallery-img",
         themeColor: 'var(--orange-500)',
+        categories: ["Industrial Product Design", "Fabrications"],
         details: {
             tags: ["Object Analysis", "Design for Manufacturing", "Reverse Engineering", "Ergonomic Study"],
             softwares: ["/assets/softwares/soliworks.svg", "/assets/softwares/AI.svg", "/assets/softwares/indesign11 1.svg", "/assets/softwares/blender6 1.svg"],
@@ -97,6 +98,7 @@ export const galleryData = [
         imgStyle: { backgroundImage: "url('/assets/Mycroche/Untitled design (3).jpg')" },
         imgClass: "gallery-img",
         themeColor: 'var(--green-400)',
+        categories: ["Industrial Product Design", "Fabrications", "Systems"],
         details: {
             tags: ["Robotic Fabrication", "Crochet", "Mycelium", "Bio + Textile + Additive Manufacturing"],
             softwares: ["/assets/softwares/fusion5 1.svg", "/assets/softwares/Rhino.svg", "/assets/softwares/blender6 1.svg", "/assets/softwares/AI.svg", "/assets/softwares/grasshopper.svg", "/assets/softwares/arduino8 1.svg", "/assets/softwares/bambu.svg", "/assets/softwares/indesign11 1.svg", "/assets/softwares/procreate.svg", "/assets/softwares/PS.svg"],
@@ -224,6 +226,7 @@ export const galleryData = [
         imgStyle: { backgroundImage: "url('/assets/emori/Gemini_Generated_Image_z7feenz7feenz7fe.png')" },
         imgClass: "gallery-img",
         themeColor: 'var(--violet-300)',
+        categories: ["Industrial Product Design", "Fabrications", "Emotions", "Systems"],
         details: {
             tags: ["Photography", "Mental Wellbeing", "Visual Therapy", "Camera", "VR", "Mood", "AI"],
             softwares: ["/assets/softwares/fusion5 1.svg", "/assets/softwares/AI.svg", "/assets/softwares/arduino8 1.svg", "/assets/softwares/bambu.svg", "/assets/softwares/blender6 1.svg", "/assets/softwares/css.svg", "/assets/softwares/d3.js.svg", "/assets/softwares/indesign11 1.svg", "/assets/softwares/flutter.svg", "/assets/softwares/github.svg", "/assets/softwares/html 1.svg", "/assets/softwares/JS.svg", "/assets/softwares/KICAD.svg", "/assets/softwares/numpy.svg", "/assets/softwares/sinterit.svg", "/assets/softwares/sparkfun.svg", "/assets/softwares/vs code.svg", "/assets/softwares/PS.svg"],
@@ -346,6 +349,7 @@ export const galleryData = [
         imgStyle: { backgroundImage: "url('/assets/circl/cover.jpeg')" },
         imgClass: "gallery-img",
         themeColor: 'var(--blue-500)',
+        categories: ["Systems", "Emotions", "UI/UX Design"],
         details: {
             tags: ["Emotionally Intelligent AI System", "Community", "Professional Presence", "Emotion Tracking", "Personalization", "In Real Life"],
             softwares: ["/assets/softwares/figma.svg", "/assets/softwares/React.svg", "/assets/softwares/After Effects.svg"],
@@ -783,6 +787,7 @@ export const galleryData = [
         themeColor: 'var(--yellow-500)',
         tagColor: 'var(--yellow-700)',
         rightPanel: 'var(--yellow-500)',
+        categories: ["Industrial Product Design", "Fabrications", "Narratives"],
         details: {
             tags: ["Emirati Culture", "Lighting"],
             softwares: ["/assets/softwares/sketchbook 1.svg", "/assets/softwares/Rhino.svg", "/assets/softwares/grasshopper.svg", "/assets/softwares/blender6 1.svg", "/assets/softwares/indesign11 1.svg", "/assets/softwares/AI.svg"],
@@ -827,6 +832,7 @@ export const galleryData = [
         imgStyle: { backgroundImage: "url('/assets/Cascader/cover.png')" },
         imgClass: "gallery-img",
         themeColor: 'var(--muted-orange-500)',
+        categories: ["Industrial Product Design", "Fabrications"],
         details: {
             tags: ["Rotomolding", "Modular Furniture"],
             softwares: ["/assets/softwares/Rhino.svg", "/assets/softwares/grasshopper.svg", "/assets/softwares/bambu.svg", "/assets/softwares/arduino8 1.svg", "/assets/softwares/fusion5 1.svg", "/assets/softwares/indesign11 1.svg", "/assets/softwares/AI.svg", "/assets/softwares/blender6 1.svg", "/assets/softwares/PS.svg"],
@@ -1015,6 +1021,7 @@ export const galleryData = [
         themeColor: 'var(--dark-blue-400)',
         tagColor: 'var(--dark-blue-600)',
         projectborderColor: 'var(--dark-blue-400)',
+        categories: ["Industrial Product Design", "Fabrications"],
         details: {
             tags: ["Redesign", "Advanced Materials", "E-Mobility"],
             softwares: ["/assets/softwares/soliworks.svg", "/assets/softwares/AI.svg", "/assets/softwares/indesign11 1.svg", "/assets/softwares/blender6 1.svg"],
@@ -1073,6 +1080,7 @@ export const galleryData = [
         imgStyle: { backgroundImage: "url('/assets/blackbird/cover.jpeg')" },
         imgClass: "gallery-img",
         themeColor: 'var(--deepred-500)',
+        categories: ["Animation"],
         details: {
             tags: ["Fashion", "Glitch", "Vulture", "Dystopia", "Identity"],
             softwares: [
@@ -1116,6 +1124,7 @@ export const galleryData = [
         imgStyle: { backgroundImage: "url('/assets/Everyday/cover.png')" },
         imgClass: "gallery-img",
         themeColor: 'var(--orange-500)',
+        categories: ["Animation"],
         details: {
             tags: ["Concept Video", "3D", "Photography"],
             softwares: ["/assets/softwares/maya.svg", "/assets/softwares/After Effects.svg", "/assets/softwares/premiere.svg"],
@@ -1151,6 +1160,7 @@ export const galleryData = [
         imgStyle: { backgroundImage: "url('/assets/Concept Library/cover.png')" },
         imgClass: "gallery-img",
         themeColor: 'var(--muted-orange-500)',
+        categories: ["UI/UX Design", "Collectives"],
         details: {
             tags: ["Design Collective Archive", "Concept Library", "Digital Museum"],
             softwares: ["/assets/softwares/figma.svg", "/assets/softwares/vs code.svg", "/assets/softwares/html 1.svg", "/assets/softwares/css.svg", "/assets/softwares/P5.svg", "/assets/softwares/spline.svg", "/assets/softwares/github.svg", "/assets/softwares/gsap.svg"],
@@ -1189,6 +1199,7 @@ export const galleryData = [
         imgClass: "gallery-img",
         themeColor: 'var(--yellow-500)',
         tagColor: 'var(--yellow-600)',
+        categories: ["UI/UX Design", "Narratives"],
         details: {
             tags: ["Emirates Council for Rural Development"],
             softwares: ["/assets/softwares/figma.svg", "/assets/softwares/AI.svg", "/assets/softwares/Firefly.svg"],
@@ -1261,6 +1272,7 @@ export const galleryData = [
         imgClass: "gallery-img",
         themeColor: 'var(--grey-400)',
         tagColor: 'var(--grey-600)',
+        categories: ["Systems"],
         details: {
             tags: ["Foundation", "Agents", "Complex Systems"],
             softwares: ["/assets/softwares/Rhino.svg", "/assets/softwares/AI.svg"],
@@ -1466,6 +1478,7 @@ export const galleryData = [
         imgClass: "gallery-img",
         themeColor: 'var(--deepred-500)',
         projectborderColor: 'var(--deepred-600)',
+        categories: ["Branding"],
         details: {
             tags: ["Concept", "Branding"],
             softwares: ["/assets/softwares/AI.svg", "/assets/softwares/indesign11 1.svg"],
@@ -1509,6 +1522,7 @@ export const galleryData = [
         themeColor: 'var(--pink-300)',
         tagColor: 'var(--dark-blue-400)',
         projectborderColor: 'var(--dark-blue-50)',
+        categories: ["Graphic Design"],
         details: {
             tags: ["Concept Art"],
             softwares: ["/assets/softwares/AI.svg", "/assets/softwares/indesign11 1.svg", "/assets/softwares/PS.svg"],
@@ -1559,6 +1573,7 @@ export const galleryData = [
         rightPanel: 'var(--red-500)',
         tagColor: 'var(--red-500)',
         highlightColor: 'var(--red-300)',
+        categories: ["Graphic Design"],
         details: {
             tags: ["Concept Art", "Typography"],
             softwares: ["/assets/softwares/AI.svg", "/assets/softwares/indesign11 1.svg", "/assets/softwares/PS.svg", "/assets/softwares/sketchbook 1.svg"],
